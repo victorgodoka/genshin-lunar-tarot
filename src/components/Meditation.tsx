@@ -86,7 +86,7 @@ export default function Meditation({ cardCount, onComplete }: MeditationProps) {
   }, [currentPhrase, phrases.length, onComplete]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-purple-900 to-indigo-950 relative overflow-hidden flex items-center justify-center">
+    <div className="min-h-screen relative overflow-hidden flex items-center justify-center">
       {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden opacity-30">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-pulse"></div>

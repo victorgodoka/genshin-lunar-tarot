@@ -5,6 +5,8 @@ import { generateReading, exportReadingAsText, type Reading as ReadingType } fro
 interface ReadingProps {
   cardCount: 1 | 3;
   onBack: () => void;
+  onNewReadingWithMeditation: () => void;
+  sharedReading?: ReadingType | null;
 }
 
 const READING_LABELS: Record<number, string[]> = {
@@ -12,15 +14,15 @@ const READING_LABELS: Record<number, string[]> = {
   3: ['Past', 'Present', 'Future']
 };
 
-export default function Reading({ cardCount, onBack }: ReadingProps) {
+export default function Reading({ cardCount, onBack, onNewReadingWithMeditation, sharedReading }: ReadingProps) {
   const [reading, setReading] = useState<ReadingType | null>(null);
   const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
   const [showNarrative, setShowNarrative] = useState(false);
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
 
   useEffect(() => {
-    // Generate reading on mount
-    const newReading = generateReading(cardCount);
+    // Use shared reading if available, otherwise generate new one
+    const newReading = sharedReading || generateReading(cardCount);
     setReading(newReading);
     
     // Flip cards one by one with animation
@@ -39,9 +41,9 @@ export default function Reading({ cardCount, onBack }: ReadingProps) {
     flipTimers.push(narrativeTimer);
 
     return () => flipTimers.forEach(timer => clearTimeout(timer));
-  }, [cardCount]);
+  }, [cardCount, sharedReading]);
 
-  const handleNewReading = () => {
+  const handleQuickNewReading = () => {
     setFlippedCards(new Set());
     setShowNarrative(false);
     const newReading = generateReading(cardCount);
@@ -61,6 +63,35 @@ export default function Reading({ cardCount, onBack }: ReadingProps) {
     flipTimers.push(narrativeTimer);
   };
 
+  const handleShare = () => {
+    if (!reading || !reading.seed) return;
+    
+    const shareUrl = `${window.location.origin}${window.location.pathname}?seed=${reading.seed}&count=${cardCount}`;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: 'Lunar Arcanum Tarot Reading',
+        text: 'Check out my tarot reading from the Lunar Arcanum!',
+        url: shareUrl
+      }).catch(console.error);
+    } else {
+      // Fallback: copy to clipboard
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        // You could add a toast notification here
+        alert('Reading link copied to clipboard!');
+      }).catch(() => {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = shareUrl;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('Reading link copied to clipboard!');
+      });
+    }
+  };
+
   const handleExport = () => {
     if (!reading) return;
     const text = exportReadingAsText(reading);
@@ -76,7 +107,7 @@ export default function Reading({ cardCount, onBack }: ReadingProps) {
   if (!reading) return null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 via-purple-900 to-indigo-950 relative overflow-hidden pb-16">
+    <div className="min-h-screen relative overflow-hidden pb-16">
       {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden opacity-30">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-pulse"></div>
@@ -93,13 +124,27 @@ export default function Reading({ cardCount, onBack }: ReadingProps) {
             <Icon icon="mdi:arrow-left" className="text-xl" />
             <span className="text-sm font-medium">Back</span>
           </button>
-          <div className="flex gap-3">
+          <div className="flex gap-3 flex-wrap">
             <button
-              onClick={handleNewReading}
+              onClick={onNewReadingWithMeditation}
               className="flex items-center gap-2 bg-purple-500/20 hover:bg-purple-500/30 text-purple-200 font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-purple-500/30 text-sm"
             >
-              <Icon icon="mdi:refresh" className="text-lg" />
+              <Icon icon="mdi:meditation" className="text-lg" />
               New Reading
+            </button>
+            <button
+              onClick={handleQuickNewReading}
+              className="flex items-center gap-2 bg-violet-500/20 hover:bg-violet-500/30 text-violet-200 font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-violet-500/30 text-sm"
+            >
+              <Icon icon="mdi:refresh" className="text-lg" />
+              Quick Reading
+            </button>
+            <button
+              onClick={handleShare}
+              className="flex items-center gap-2 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-200 font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-emerald-500/30 text-sm"
+            >
+              <Icon icon="mdi:share" className="text-lg" />
+              Share
             </button>
             <button
               onClick={handleExport}
@@ -142,7 +187,7 @@ export default function Reading({ cardCount, onBack }: ReadingProps) {
                       {/* Card Image */}
                       <div className="relative overflow-hidden p-4">
                         <img
-                          src={`/tarot/${card.id}.png`}
+                          src={`tarot/${card.id}.png`}
                           alt={card.name}
                           className="w-full h-full object-cover"
                         />
@@ -258,9 +303,9 @@ export default function Reading({ cardCount, onBack }: ReadingProps) {
                   <div className="sticky top-6">
                     <div className="aspect-[2/3] rounded-xl overflow-hidden border border-purple-500/30 shadow-xl">
                       <img
-                        src={`/tarot/${reading.cards[selectedCard].id}.png`}
+                        src={`tarot/${reading.cards[selectedCard].id}.png`}
                         alt={reading.cards[selectedCard].name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover p-2"
                       />
                     </div>
                   </div>

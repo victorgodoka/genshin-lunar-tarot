@@ -11,22 +11,7 @@ export default function Home({ onStartReading, onViewGallery }: HomeProps) {
   const [skipMeditation, setSkipMeditation] = useState(false);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-indigo-950 via-purple-900 to-slate-900 relative overflow-hidden" role="main">
-      {/* Animated stars background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="stars absolute inset-0" style={{
-          background: `radial-gradient(2px 2px at 20% 30%, white, transparent),
-                       radial-gradient(2px 2px at 60% 70%, white, transparent),
-                       radial-gradient(1px 1px at 50% 50%, white, transparent),
-                       radial-gradient(1px 1px at 80% 10%, white, transparent),
-                       radial-gradient(2px 2px at 90% 60%, white, transparent),
-                       radial-gradient(1px 1px at 33% 80%, white, transparent),
-                       radial-gradient(1px 1px at 15% 90%, white, transparent)`,
-          backgroundSize: '200% 200%',
-          animation: 'twinkle 8s ease-in-out infinite'
-        }}></div>
-      </div>
-
+    <main className="relative overflow-hidden" role="main">
       {/* Moon glow effect */}
       <div className="absolute top-20 right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
       
