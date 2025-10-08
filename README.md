@@ -52,6 +52,38 @@ pnpm dev
 pnpm build
 ```
 
+## 🚀 Deployment
+
+### GitHub Pages
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+#### Setup Steps:
+
+1. **Fork or clone this repository** to your GitHub account
+2. **Enable GitHub Pages** in your repository:
+   - Go to Settings → Pages
+   - Source: Deploy from a branch
+   - Branch: Select `gh-pages` (will be created automatically)
+3. **Update the base path** in `vite.config.ts` if your repository name is different:
+   ```ts
+   base: '/your-repository-name/', // Replace with your actual repo name
+   ```
+4. **Push to main branch** - the GitHub Action will automatically build and deploy
+
+#### Manual Deployment:
+
+You can also deploy manually using the gh-pages package:
+
+```bash
+# Build and deploy to gh-pages branch
+pnpm deploy
+```
+
+#### Live Demo:
+Once deployed, your tarot app will be available at:
+`https://yourusername.github.io/your-repository-name/`
+
 ## 📱 SEO & Performance
 
 This project includes:

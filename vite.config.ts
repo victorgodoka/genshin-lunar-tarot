@@ -12,7 +12,7 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
-  base: '/your-tarot/', // Replace 'your-tarot' with your GitHub repository name
+  base: '/genshin-lunar-tarot/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
