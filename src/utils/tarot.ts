@@ -813,6 +813,87 @@ export const NARRATIVES = {
         "Finality reveals truth and renewal.",
         "Transformation completes the story’s arc."
       ]
+    },
+    "judge": {
+      "intro": [
+        "The scales of justice weigh all actions.",
+        "Truth emerges from careful deliberation.",
+        "Balance seeks its rightful place."
+      ],
+      "between_cards": [
+        "Judgment flows to the next consideration.",
+        "The scales tip, influencing what follows.",
+        "Truth guides the unfolding sequence."
+      ],
+      "contrast": [
+        "Yet bias challenges fair assessment.",
+        "Injustice confronts the balanced view.",
+        "Truth faces distortion and deception."
+      ],
+      "reinforcement": [
+        "Justice strengthens righteous action.",
+        "Balance supports the path ahead.",
+        "Truth reinforces what is right."
+      ],
+      "finale": [
+        "Justice renders its final verdict.",
+        "The scales find their true balance.",
+        "Truth prevails in the end."
+      ]
+    },
+    "champion": {
+      "intro": [
+        "Victory calls to those who dare to answer.",
+        "Courage rises to meet the challenge ahead.",
+        "A banner unfurls in the winds of destiny."
+      ],
+      "between_cards": [
+        "Triumph carries forward to the next battle.",
+        "Victory's momentum guides what follows.",
+        "The champion's spirit influences the path."
+      ],
+      "contrast": [
+        "Yet defeat shadows every victory.",
+        "Pride confronts the humble truth.",
+        "Glory faces the cost of ambition."
+      ],
+      "reinforcement": [
+        "Success builds upon previous victories.",
+        "Courage strengthens the resolve ahead.",
+        "The champion's path grows ever brighter."
+      ],
+      "finale": [
+        "Victory is claimed and honor earned.",
+        "The champion stands triumphant.",
+        "Glory echoes through the ages."
+      ]
+    },
+    "alchemist": {
+      "intro": [
+        "Elements dance in perfect harmony.",
+        "Transformation begins with patient wisdom.",
+        "The art of change reveals its secrets."
+      ],
+      "between_cards": [
+        "Alchemy flows into the next mixture.",
+        "Transformation guides the sequence forward.",
+        "The elements inform what comes next."
+      ],
+      "contrast": [
+        "Yet chaos resists the ordered change.",
+        "Imbalance threatens the delicate work.",
+        "Elements rebel against forced harmony."
+      ],
+      "reinforcement": [
+        "Harmony deepens the transformation.",
+        "Balance strengthens the alchemical work.",
+        "Elements unite in perfect synthesis."
+      ],
+      "finale": [
+        "The great work reaches completion.",
+        "Elements find their perfect balance.",
+        "Transformation achieves its purpose."
+      ]
     }
   }
 }
