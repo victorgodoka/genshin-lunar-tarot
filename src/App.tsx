@@ -9,11 +9,9 @@ type View = 'home' | 'meditation' | 'reading' | 'gallery'
 function App() {
   const [view, setView] = useState<View>('home')
   const [cardCount, setCardCount] = useState<1 | 3>(3)
-  const [skipMeditation, setSkipMeditation] = useState(false)
 
   const handleStartReading = (count: 1 | 3, skip: boolean) => {
     setCardCount(count)
-    setSkipMeditation(skip)
     if (skip) {
       setView('reading')
     } else {
