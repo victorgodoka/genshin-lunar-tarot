@@ -8,7 +8,7 @@ export const CARDS = [
     insight: "Power lies in mastering the tools at hand and directing your will.",
     tags: ["creation", "power", "transience", "spark", "will"],
     narrative_archetype: "initiator",
-    element: "electro",
+    element: "pyro",
     tone: "hopeful",
     short_phrases: [
       "A spark in the void.",
@@ -31,7 +31,7 @@ export const CARDS = [
     insight: "Listen to the unseen — what you seek is already whispering.",
     tags: ["mystery", "intuition", "silence", "hidden", "depth"],
     narrative_archetype: "seer",
-    element: "hydro",
+    element: "geo",
     tone: "mysterious",
     short_phrases: [
       "Behind the veil, truth stirs.",
@@ -70,7 +70,7 @@ export const CARDS = [
     insight: "Power is both shield and prison.",
     tags: ["authority", "structure", "order", "power", "control"],
     narrative_archetype: "ruler",
-    element: "geo",
+    element: "cryo",
     tone: "commanding",
     short_phrases: [
       "The crown weighs heavy.",
@@ -86,7 +86,7 @@ export const CARDS = [
     insight: "Meaning is found in what cannot be spoken.",
     tags: ["faith", "guidance", "tradition", "belief", "ritual"],
     narrative_archetype: "teacher",
-    element: "geo",
+    element: "anemo",
     tone: "reverent",
     short_phrases: [
       "The hymn opens the gate.",
@@ -125,7 +125,7 @@ export const CARDS = [
     insight: "The path forward is carved by steel and wind.",
     tags: ["victory", "resolve", "movement", "courage", "will"],
     narrative_archetype: "champion",
-    element: "anemo",
+    element: "geo",
     tone: "triumphant",
     short_phrases: [
       "Banners rise against the storm.",
@@ -157,7 +157,7 @@ export const CARDS = [
     insight: "Wisdom comes from withdrawing to illuminate your own path.",
     tags: ["wisdom", "introspection", "solitude", "guidance", "light"],
     narrative_archetype: "wanderer",
-    element: "cryo",
+    element: "dendro",
     tone: "contemplative",
     short_phrases: [
       "The lantern remembers.",
@@ -189,7 +189,7 @@ export const CARDS = [
     insight: "Justice demands fairness, accountability, and clear judgment.",
     tags: ["justice", "law", "truth", "balance", "reason"],
     narrative_archetype: "judge",
-    element: "geo",
+    element: "hydro",
     tone: "balanced",
     short_phrases: [
       "The scales never sleep.",
@@ -212,7 +212,7 @@ export const CARDS = [
     insight: "Wisdom costs what comfort cannot give.",
     tags: ["sacrifice", "perspective", "pause", "wisdom", "inversion"],
     narrative_archetype: "martyr",
-    element: "hydro",
+    element: "pyro",
     tone: "reflective",
     short_phrases: [
       "The world turns upside down.",
@@ -228,7 +228,7 @@ export const CARDS = [
     insight: "All endings are invitations to begin.",
     tags: ["death", "rebirth", "change", "transformation", "transition"],
     narrative_archetype: "reaper",
-    element: "cryo",
+    element: "pyro",
     tone: "solemn",
     short_phrases: [
       "The song falls silent.",
@@ -241,10 +241,10 @@ export const CARDS = [
     title: "Lunar Arcanum XIV – Temperance",
     traditional_meaning: "Balance, moderation, alchemy.",
     lunar_interpretation: "Sand must be sifted from water; dreams united with the real.",
-    insight: "True harmony is crafted with patience.",
+    insight: "True Harmony is crafted with patience.",
     tags: ["balance", "alchemy", "moderation", "harmony", "flow"],
     narrative_archetype: "alchemist",
-    element: "hydro",
+    element: "geo",
     tone: "calm",
     short_phrases: [
       "Water remembers balance.",
@@ -308,7 +308,7 @@ export const CARDS = [
     insight: "Navigate uncertainty by listening to your inner voice.",
     tags: ["illusion", "mystery", "night", "intuition", "depth"],
     narrative_archetype: "dreamer",
-    element: "cryo",
+    element: "hydro",
     tone: "mysterious",
     short_phrases: [
       "The moon remembers the tides.",
@@ -324,7 +324,7 @@ export const CARDS = [
     insight: "Light reveals and warms all things.",
     tags: ["light", "joy", "clarity", "warmth", "life"],
     narrative_archetype: "illuminator",
-    element: "pyro",
+    element: "dendro",
     tone: "radiant",
     short_phrases: [
       "The sun sings life awake.",
@@ -356,7 +356,7 @@ export const CARDS = [
     insight: "Wholeness does not end the story — it sustains it.",
     tags: ["completion", "unity", "memory", "cosmos", "wholeness"],
     narrative_archetype: "weaver",
-    element: "anemo",
+    element: "dendro",
     tone: "harmonious",
     short_phrases: [
       "The twins join hands.",

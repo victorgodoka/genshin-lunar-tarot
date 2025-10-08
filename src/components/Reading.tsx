@@ -110,8 +110,8 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
     <div className="min-h-screen relative overflow-hidden pb-16">
       {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden opacity-30">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <div className="relative z-10 container mr-auto ml-auto px-4 py-8 max-w-7xl">
@@ -119,7 +119,7 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
         <div className="flex justify-between items-center mb-12">
           <button
             onClick={onBack}
-            className="flex items-center gap-2 text-purple-300 hover:text-purple-200 transition-colors duration-200"
+            className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors duration-200"
           >
             <Icon icon="mdi:arrow-left" className="text-xl" />
             <span className="text-sm font-medium">Back</span>
@@ -127,14 +127,14 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
           <div className="flex gap-3 flex-wrap">
             <button
               onClick={onNewReadingWithMeditation}
-              className="flex items-center gap-2 bg-purple-500/20 hover:bg-purple-500/30 text-purple-200 font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-purple-500/30 text-sm"
+              className="flex items-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-200 font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-blue-500/30 text-sm"
             >
               <Icon icon="mdi:meditation" className="text-lg" />
               New Reading
             </button>
             <button
               onClick={handleQuickNewReading}
-              className="flex items-center gap-2 bg-violet-500/20 hover:bg-violet-500/30 text-violet-200 font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-violet-500/30 text-sm"
+              className="flex items-center gap-2 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-200 font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-cyan-500/30 text-sm"
             >
               <Icon icon="mdi:refresh" className="text-lg" />
               Quick Reading
@@ -148,7 +148,7 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
             </button>
             <button
               onClick={handleExport}
-              className="flex items-center gap-2 bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-200 font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-indigo-500/30 text-sm"
+              className="flex items-center gap-2 bg-teal-500/20 hover:bg-teal-500/30 text-teal-200 font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-teal-500/30 text-sm"
             >
               <Icon icon="mdi:download" className="text-lg" />
               Export
@@ -174,7 +174,7 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
                   <div className="relative group">
                     {/* Position Label */}
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                      <span className="text-purple-200 font-semibold text-xs uppercase tracking-wider px-3 py-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full shadow-lg">
+                      <span className="text-blue-200 font-semibold text-xs uppercase tracking-wider px-3 py-1 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full shadow-lg">
                         {label}
                       </span>
                     </div>
@@ -182,7 +182,16 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
                     {/* Card */}
                     <button
                       onClick={() => setSelectedCard(index)}
-                      className="w-full relative rounded-2xl overflow-hidden border border-purple-500/30 bg-slate-900/50 backdrop-blur-sm hover:border-purple-400/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20 cursor-pointer"
+                      className={`w-full relative rounded-2xl overflow-hidden border bg-slate-900/50 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl cursor-pointer ${
+                        card.element === 'electro' ? 'border-purple-500/30 hover:border-purple-400/50 hover:shadow-purple-500/20' :
+                        card.element === 'hydro' ? 'border-blue-500/30 hover:border-blue-400/50 hover:shadow-blue-500/20' :
+                        card.element === 'dendro' ? 'border-green-500/30 hover:border-green-400/50 hover:shadow-green-500/20' :
+                        card.element === 'geo' ? 'border-yellow-500/30 hover:border-yellow-400/50 hover:shadow-yellow-500/20' :
+                        card.element === 'pyro' ? 'border-red-500/30 hover:border-red-400/50 hover:shadow-red-500/20' :
+                        card.element === 'anemo' ? 'border-teal-500/30 hover:border-teal-400/50 hover:shadow-teal-500/20' :
+                        card.element === 'cryo' ? 'border-cyan-500/30 hover:border-cyan-400/50 hover:shadow-cyan-500/20' :
+                        'border-gray-500/30 hover:border-gray-400/50 hover:shadow-gray-500/20'
+                      }`}
                     >
                       {/* Card Image */}
                       <div className="relative overflow-hidden p-4">
@@ -205,14 +214,41 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
                       
                       {/* Card Info */}
                       <div className="p-4 space-y-2 text-left absolute bottom-0">
-                        <h3 className="text-xl font-bold text-purple-100">
+                        <h3 className={`text-xl font-bold ${
+                          card.element === 'electro' ? 'text-purple-100' :
+                          card.element === 'hydro' ? 'text-blue-100' :
+                          card.element === 'dendro' ? 'text-green-100' :
+                          card.element === 'geo' ? 'text-yellow-100' :
+                          card.element === 'pyro' ? 'text-red-100' :
+                          card.element === 'anemo' ? 'text-teal-100' :
+                          card.element === 'cryo' ? 'text-cyan-100' :
+                          'text-gray-100'
+                        }`}>
                           {card.name}
                           {card.reversed && <span className="text-red-300 text-sm ml-2">(Reversed)</span>}
                         </h3>
-                        <p className="text-sm text-indigo-300 italic">
+                        <p className={`text-sm italic ${
+                          card.element === 'electro' ? 'text-purple-300' :
+                          card.element === 'hydro' ? 'text-blue-300' :
+                          card.element === 'dendro' ? 'text-green-300' :
+                          card.element === 'geo' ? 'text-yellow-300' :
+                          card.element === 'pyro' ? 'text-red-300' :
+                          card.element === 'anemo' ? 'text-teal-300' :
+                          card.element === 'cryo' ? 'text-cyan-300' :
+                          'text-gray-300'
+                        }`}>
                           "{card.reversed && card.reversed_phrases ? card.reversed_phrases[0] : card.short_phrases[0]}"
                         </p>
-                        <p className="text-xs text-purple-300/70 leading-relaxed">
+                        <p className={`text-xs leading-relaxed ${
+                          card.element === 'electro' ? 'text-purple-300/70' :
+                          card.element === 'hydro' ? 'text-blue-300/70' :
+                          card.element === 'dendro' ? 'text-green-300/70' :
+                          card.element === 'geo' ? 'text-yellow-300/70' :
+                          card.element === 'pyro' ? 'text-red-300/70' :
+                          card.element === 'anemo' ? 'text-teal-300/70' :
+                          card.element === 'cryo' ? 'text-cyan-300/70' :
+                          'text-gray-300/70'
+                        }`}>
                           {card.reversed && card.reversed_insight ? card.reversed_insight : card.insight}
                         </p>
                       </div>
@@ -264,7 +300,7 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
                         icon={getIcon()} 
                         className="text-3xl"
                       />
-                      <span className="text-purple-200 capitalize text-sm font-semibold">{key}</span>
+                      <span className="text-blue-200 capitalize text-sm font-semibold">{key}</span>
                     </div>
                   );
                 })}
@@ -280,21 +316,21 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
           }`}
         >
           <div className="max-w-4xl mx-auto">
-            <div className="bg-slate-900/40 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8 md:p-10">
+            <div className="bg-slate-900/40 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 md:p-10">
               <div className="space-y-6">
                 {reading.narrative.split('\n\n').map((paragraph, index) => (
                   <p
                     key={index}
-                    className="text-purple-100/90 leading-relaxed text-lg first-letter:text-3xl first-letter:font-bold first-letter:text-purple-300"
+                    className="text-blue-100/90 leading-relaxed text-lg first-letter:text-3xl first-letter:font-bold first-letter:text-blue-300"
                     dangerouslySetInnerHTML={{
-                      __html: paragraph.replace(/\*\*(.*?)\*\*/g, '<strong class="text-purple-300 font-semibold">$1</strong>')
+                      __html: paragraph.replace(/\*\*(.*?)\*\*/g, '<strong class="text-blue-300 font-semibold">$1</strong>')
                     }}
                   />
                 ))}
               </div>
               {reading.seed && (
-                <div className="mt-8 pt-6 border-t border-purple-500/20">
-                  <p className="text-center text-xs text-purple-400/50 font-mono">
+                <div className="mt-8 pt-6 border-t border-blue-500/20">
+                  <p className="text-center text-xs text-blue-400/50 font-mono">
                     Reading Seed: {reading.seed}
                   </p>
                 </div>
@@ -310,14 +346,32 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
             onClick={() => setSelectedCard(null)}
           >
             <div
-              className="bg-slate-900/95 backdrop-blur-sm rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto border border-purple-500/30 shadow-2xl"
+              className={`bg-slate-900/95 backdrop-blur-sm rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto border shadow-2xl ${
+                reading.cards[selectedCard].element === 'electro' ? 'border-purple-500/30' :
+                reading.cards[selectedCard].element === 'hydro' ? 'border-blue-500/30' :
+                reading.cards[selectedCard].element === 'dendro' ? 'border-green-500/30' :
+                reading.cards[selectedCard].element === 'geo' ? 'border-yellow-500/30' :
+                reading.cards[selectedCard].element === 'pyro' ? 'border-red-500/30' :
+                reading.cards[selectedCard].element === 'anemo' ? 'border-teal-500/30' :
+                reading.cards[selectedCard].element === 'cryo' ? 'border-cyan-500/30' :
+                'border-gray-500/30'
+              }`}
               onClick={(e) => e.stopPropagation()}
             >
               <div className="md:flex">
                 {/* Card Image */}
                 <div className="md:w-2/5 p-6">
                   <div className="sticky top-6">
-                    <div className="aspect-[2/3] rounded-xl overflow-hidden border border-purple-500/30 shadow-xl relative">
+                    <div className={`aspect-[2/3] rounded-xl overflow-hidden border shadow-xl relative ${
+                      reading.cards[selectedCard].element === 'electro' ? 'border-purple-500/30' :
+                      reading.cards[selectedCard].element === 'hydro' ? 'border-blue-500/30' :
+                      reading.cards[selectedCard].element === 'dendro' ? 'border-green-500/30' :
+                      reading.cards[selectedCard].element === 'geo' ? 'border-yellow-500/30' :
+                      reading.cards[selectedCard].element === 'pyro' ? 'border-red-500/30' :
+                      reading.cards[selectedCard].element === 'anemo' ? 'border-teal-500/30' :
+                      reading.cards[selectedCard].element === 'cryo' ? 'border-cyan-500/30' :
+                      'border-gray-500/30'
+                    }`}>
                       <img
                         src={`tarot/${reading.cards[selectedCard].id}.png`}
                         alt={reading.cards[selectedCard].name}
@@ -338,15 +392,42 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
                 <div className="md:w-3/5 p-6 md:p-8 space-y-6">
                   <div className="flex items-start justify-between">
                     <div>
-                      <h2 className="text-3xl md:text-4xl font-bold text-purple-100 mb-2">
+                      <h2 className={`text-3xl md:text-4xl font-bold mb-2 ${
+                        reading.cards[selectedCard].element === 'electro' ? 'text-purple-100' :
+                        reading.cards[selectedCard].element === 'hydro' ? 'text-blue-100' :
+                        reading.cards[selectedCard].element === 'dendro' ? 'text-green-100' :
+                        reading.cards[selectedCard].element === 'geo' ? 'text-yellow-100' :
+                        reading.cards[selectedCard].element === 'pyro' ? 'text-red-100' :
+                        reading.cards[selectedCard].element === 'anemo' ? 'text-teal-100' :
+                        reading.cards[selectedCard].element === 'cryo' ? 'text-cyan-100' :
+                        'text-gray-100'
+                      }`}>
                         {reading.cards[selectedCard].name}
                         {reading.cards[selectedCard].reversed && <span className="text-red-300 text-lg ml-2">(Reversed)</span>}
                       </h2>
-                      <p className="text-sm text-purple-400">Lunar Arcanum {reading.cards[selectedCard].id}</p>
+                      <p className={`text-sm ${
+                        reading.cards[selectedCard].element === 'electro' ? 'text-purple-400' :
+                        reading.cards[selectedCard].element === 'hydro' ? 'text-blue-400' :
+                        reading.cards[selectedCard].element === 'dendro' ? 'text-green-400' :
+                        reading.cards[selectedCard].element === 'geo' ? 'text-yellow-400' :
+                        reading.cards[selectedCard].element === 'pyro' ? 'text-red-400' :
+                        reading.cards[selectedCard].element === 'anemo' ? 'text-teal-400' :
+                        reading.cards[selectedCard].element === 'cryo' ? 'text-cyan-400' :
+                        'text-gray-400'
+                      }`}>Lunar Arcanum {reading.cards[selectedCard].id}</p>
                     </div>
                     <button
                       onClick={() => setSelectedCard(null)}
-                      className="text-purple-300 hover:text-purple-200 transition-colors"
+                      className={`transition-colors ${
+                        reading.cards[selectedCard].element === 'electro' ? 'text-purple-300 hover:text-purple-200' :
+                        reading.cards[selectedCard].element === 'hydro' ? 'text-blue-300 hover:text-blue-200' :
+                        reading.cards[selectedCard].element === 'dendro' ? 'text-green-300 hover:text-green-200' :
+                        reading.cards[selectedCard].element === 'geo' ? 'text-yellow-300 hover:text-yellow-200' :
+                        reading.cards[selectedCard].element === 'pyro' ? 'text-red-300 hover:text-red-200' :
+                        reading.cards[selectedCard].element === 'anemo' ? 'text-teal-300 hover:text-teal-200' :
+                        reading.cards[selectedCard].element === 'cryo' ? 'text-cyan-300 hover:text-cyan-200' :
+                        'text-gray-300 hover:text-gray-200'
+                      }`}
                     >
                       <Icon icon="mdi:close" className="text-2xl" />
                     </button>
@@ -354,10 +435,28 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
 
                   <div className="space-y-4">
                     <div>
-                      <h3 className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">
+                      <h3 className={`text-xs font-bold uppercase tracking-wider mb-2 ${
+                        reading.cards[selectedCard].element === 'electro' ? 'text-purple-400' :
+                        reading.cards[selectedCard].element === 'hydro' ? 'text-blue-400' :
+                        reading.cards[selectedCard].element === 'dendro' ? 'text-green-400' :
+                        reading.cards[selectedCard].element === 'geo' ? 'text-yellow-400' :
+                        reading.cards[selectedCard].element === 'pyro' ? 'text-red-400' :
+                        reading.cards[selectedCard].element === 'anemo' ? 'text-teal-400' :
+                        reading.cards[selectedCard].element === 'cryo' ? 'text-cyan-400' :
+                        'text-gray-400'
+                      }`}>
                         {reading.cards[selectedCard].reversed ? 'Reversed Meaning' : 'Traditional Meaning'}
                       </h3>
-                      <p className="text-purple-100/90 leading-relaxed">
+                      <p className={`leading-relaxed ${
+                        reading.cards[selectedCard].element === 'electro' ? 'text-purple-100/90' :
+                        reading.cards[selectedCard].element === 'hydro' ? 'text-blue-100/90' :
+                        reading.cards[selectedCard].element === 'dendro' ? 'text-green-100/90' :
+                        reading.cards[selectedCard].element === 'geo' ? 'text-yellow-100/90' :
+                        reading.cards[selectedCard].element === 'pyro' ? 'text-red-100/90' :
+                        reading.cards[selectedCard].element === 'anemo' ? 'text-teal-100/90' :
+                        reading.cards[selectedCard].element === 'cryo' ? 'text-cyan-100/90' :
+                        'text-gray-100/90'
+                      }`}>
                         {reading.cards[selectedCard].reversed && reading.cards[selectedCard].reversed_meaning 
                           ? reading.cards[selectedCard].reversed_meaning 
                           : reading.cards[selectedCard].traditional_meaning}
@@ -368,7 +467,16 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
                       <h3 className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">
                         {reading.cards[selectedCard].reversed ? 'Reversed Interpretation' : 'Lunar Interpretation'}
                       </h3>
-                      <p className="text-purple-100/90 italic leading-relaxed">
+                      <p className={`italic leading-relaxed ${
+                        reading.cards[selectedCard].element === 'electro' ? 'text-purple-100/90' :
+                        reading.cards[selectedCard].element === 'hydro' ? 'text-blue-100/90' :
+                        reading.cards[selectedCard].element === 'dendro' ? 'text-green-100/90' :
+                        reading.cards[selectedCard].element === 'geo' ? 'text-yellow-100/90' :
+                        reading.cards[selectedCard].element === 'pyro' ? 'text-red-100/90' :
+                        reading.cards[selectedCard].element === 'anemo' ? 'text-teal-100/90' :
+                        reading.cards[selectedCard].element === 'cryo' ? 'text-cyan-100/90' :
+                        'text-gray-100/90'
+                      }`}>
                         {reading.cards[selectedCard].reversed && reading.cards[selectedCard].reversed_interpretation 
                           ? reading.cards[selectedCard].reversed_interpretation 
                           : reading.cards[selectedCard].lunar_interpretation}

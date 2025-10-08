@@ -13,40 +13,40 @@ export default function Home({ onStartReading, onViewGallery }: HomeProps) {
   return (
     <main className="relative overflow-hidden" role="main">
       {/* Moon glow effect */}
-      <div className="absolute top-20 right-20 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute top-20 right-20 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
       
       <div className="relative z-10 container mr-auto ml-auto px-4 py-12 flex flex-col items-center justify-center min-h-screen max-w-4xl">
         {/* Title */}
         <header className="text-center mb-10">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 tracking-tight leading-tight">
-            <span className="bg-gradient-to-r from-purple-200 via-purple-400 to-indigo-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-200 via-blue-400 to-cyan-300 bg-clip-text text-transparent">
               Lunar Arcanum Tarot
             </span>
           </h1>
-          <p className="text-purple-300/80 text-base md:text-lg tracking-wide">
+          <p className="text-blue-300/80 text-base md:text-lg tracking-wide">
             of Teyvat
           </p>
         </header>
         
         {/* Mystique text */}
         <section className="max-w-3xl text-center space-y-5 mb-12" aria-label="About Lunar Arcanum">
-          <p className="text-purple-100/90 text-base md:text-lg leading-relaxed">
+          <p className="text-blue-100/90 text-base md:text-lg leading-relaxed">
             Step into a world where the threads of fate intertwine with the elements, and the whispers of gods and mortals echo across countless realms. 
             Here, the Lunar Arcanum Tarot brings the mysteries of Teyvat to your fingertips, offering guidance, insight, and reflection through the symbolic lens of the 22 major Arcana.
           </p>
           
-          <p className="text-purple-200/80 text-sm md:text-base leading-relaxed">
+          <p className="text-blue-200/80 text-sm md:text-base leading-relaxed">
             Each card holds a fragment of the world's hidden truths: from the radiant light of the Sun to the shadowed tides of the Moon, 
-            from the quiet contemplation of the Hermit to the sudden upheaval of the Tower. These cards do not merely predict—they <em className="text-indigo-300 font-semibold">illuminate</em> the choices, 
+            from the quiet contemplation of the Hermit to the sudden upheaval of the Tower. These cards do not merely predict—they <em className="text-cyan-300 font-semibold">illuminate</em> the choices, 
             challenges, and connections that shape your journey.
           </p>
           
-          <p className="text-purple-200/70 text-sm md:text-base leading-relaxed">
+          <p className="text-blue-200/70 text-sm md:text-base leading-relaxed">
             Through single-card insights, multi-card spreads, or yes/no questions, you will explore your path in love, family, and work, 
             guided by the wisdom encoded in the Lunar Arcanum.
           </p>
           
-          <p className="text-purple-300/90 text-base md:text-lg leading-relaxed italic font-medium">
+          <p className="text-blue-300/90 text-base md:text-lg leading-relaxed italic font-medium">
             Embrace the magic, the mysteries, and the stories woven into the Arcanum. 
             Let the light of the stars, the currents of the elements, and the voices of the past guide your destiny.
           </p>
@@ -59,8 +59,8 @@ export default function Home({ onStartReading, onViewGallery }: HomeProps) {
             <button
               className={`group relative overflow-hidden rounded-2xl p-6 transition-all duration-300 ${
                 cardCount === 1
-                  ? 'bg-gradient-to-br from-purple-600 to-indigo-600 shadow-xl shadow-purple-500/30 scale-105'
-                  : 'bg-slate-900/40 border border-purple-500/30 hover:border-purple-400/50 hover:bg-slate-900/60'
+                  ? 'bg-gradient-to-br from-blue-600 to-cyan-600 shadow-xl shadow-blue-500/30 scale-105'
+                  : 'bg-slate-900/40 border border-blue-500/30 hover:border-blue-400/50 hover:bg-slate-900/60'
               }`}
               onClick={() => setCardCount(1)}
               aria-label="Select single card reading for yes or no questions"
@@ -69,13 +69,13 @@ export default function Home({ onStartReading, onViewGallery }: HomeProps) {
               <div className="relative z-10 flex flex-col items-center text-center space-y-3">
                 <Icon 
                   icon="mdi:cards-playing-outline" 
-                  className={`text-4xl ${cardCount === 1 ? 'text-white' : 'text-purple-300'}`}
+                  className={`text-4xl ${cardCount === 1 ? 'text-white' : 'text-blue-300'}`}
                 />
                 <div>
-                  <div className={`text-lg font-bold ${cardCount === 1 ? 'text-white' : 'text-purple-200'}`}>
+                  <div className={`text-lg font-bold ${cardCount === 1 ? 'text-white' : 'text-blue-200'}`}>
                     Single Card
                   </div>
-                  <div className={`text-xs mt-1 ${cardCount === 1 ? 'text-purple-100' : 'text-purple-400'}`}>
+                  <div className={`text-xs mt-1 ${cardCount === 1 ? 'text-blue-100' : 'text-blue-400'}`}>
                     Yes or No Question
                   </div>
                 </div>
@@ -88,8 +88,8 @@ export default function Home({ onStartReading, onViewGallery }: HomeProps) {
             <button
               className={`group relative overflow-hidden rounded-2xl p-6 transition-all duration-300 ${
                 cardCount === 3
-                  ? 'bg-gradient-to-br from-purple-600 to-indigo-600 shadow-xl shadow-purple-500/30 scale-105'
-                  : 'bg-slate-900/40 border border-purple-500/30 hover:border-purple-400/50 hover:bg-slate-900/60'
+                  ? 'bg-gradient-to-br from-blue-600 to-cyan-600 shadow-xl shadow-blue-500/30 scale-105'
+                  : 'bg-slate-900/40 border border-blue-500/30 hover:border-blue-400/50 hover:bg-slate-900/60'
               }`}
               onClick={() => setCardCount(3)}
               aria-label="Select three card spread for past, present, and future"
@@ -98,13 +98,13 @@ export default function Home({ onStartReading, onViewGallery }: HomeProps) {
               <div className="relative z-10 flex flex-col items-center text-center space-y-3">
                 <Icon 
                   icon="mdi:cards-playing" 
-                  className={`text-4xl ${cardCount === 3 ? 'text-white' : 'text-purple-300'}`}
+                  className={`text-4xl ${cardCount === 3 ? 'text-white' : 'text-blue-300'}`}
                 />
                 <div>
-                  <div className={`text-lg font-bold ${cardCount === 3 ? 'text-white' : 'text-purple-200'}`}>
+                  <div className={`text-lg font-bold ${cardCount === 3 ? 'text-white' : 'text-blue-200'}`}>
                     Three Card Spread
                   </div>
-                  <div className={`text-xs mt-1 ${cardCount === 3 ? 'text-purple-100' : 'text-purple-400'}`}>
+                  <div className={`text-xs mt-1 ${cardCount === 3 ? 'text-blue-100' : 'text-blue-400'}`}>
                     Past, Present, Future
                   </div>
                 </div>
@@ -117,14 +117,14 @@ export default function Home({ onStartReading, onViewGallery }: HomeProps) {
 
           {/* Skip meditation checkbox */}
           <div className="mb-4">
-            <label className="inline-flex items-center gap-3 cursor-pointer bg-slate-900/40 backdrop-blur-sm border border-purple-500/30 rounded-xl px-5 py-3 hover:bg-slate-900/60 transition-all duration-300">
+            <label className="inline-flex items-center gap-3 cursor-pointer bg-slate-900/40 backdrop-blur-sm border border-blue-500/30 rounded-xl px-5 py-3 hover:bg-slate-900/60 transition-all duration-300">
               <input
                 type="checkbox"
                 checked={skipMeditation}
                 onChange={(e) => setSkipMeditation(e.target.checked)}
-                className="w-4 h-4 rounded border-purple-500/50 bg-slate-800 text-purple-600 focus:ring-2 focus:ring-purple-500 focus:ring-offset-0 cursor-pointer"
+                className="w-4 h-4 rounded border-blue-500/50 bg-slate-800 text-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-0 cursor-pointer"
               />
-              <span className="text-purple-200 text-sm font-medium">
+              <span className="text-blue-200 text-sm font-medium">
                 Skip meditation, I already have my question in mind
               </span>
             </label>
@@ -133,7 +133,7 @@ export default function Home({ onStartReading, onViewGallery }: HomeProps) {
           {/* Action buttons */}
           <div className="space-y-3">
             <button 
-              className="w-full group relative overflow-hidden bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg shadow-purple-500/40 hover:shadow-purple-400/60 hover:scale-[1.02]"
+              className="w-full group relative overflow-hidden bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/40 hover:shadow-blue-400/60 hover:scale-[1.02]"
               onClick={() => onStartReading(cardCount, skipMeditation)}
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
@@ -144,7 +144,7 @@ export default function Home({ onStartReading, onViewGallery }: HomeProps) {
             </button>
 
             <button 
-              className="w-full flex items-center justify-center gap-2 bg-slate-900/40 hover:bg-slate-900/60 text-purple-200 font-medium py-3 px-6 rounded-xl transition-all duration-300 border border-purple-500/30 hover:border-purple-400/50"
+              className="w-full flex items-center justify-center gap-2 bg-slate-900/40 hover:bg-slate-900/60 text-blue-200 font-medium py-3 px-6 rounded-xl transition-all duration-300 border border-blue-500/30 hover:border-blue-400/50"
               onClick={onViewGallery}
             >
               <Icon icon="mdi:book-open-page-variant" className="text-lg" />

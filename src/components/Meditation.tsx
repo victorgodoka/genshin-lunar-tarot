@@ -89,8 +89,8 @@ export default function Meditation({ cardCount, onComplete }: MeditationProps) {
     <div className="min-h-screen relative overflow-hidden flex items-center justify-center">
       {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden opacity-30">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
       <div className="relative z-10 max-w-2xl w-full mx-auto px-4 text-center">
@@ -98,9 +98,9 @@ export default function Meditation({ cardCount, onComplete }: MeditationProps) {
         <div className="flex items-center justify-center gap-3 mb-12">
           <Icon 
             icon={cardCount === 1 ? "mdi:cards-playing-outline" : "mdi:cards-playing"} 
-            className="text-4xl text-purple-300"
+            className="text-4xl text-blue-300"
           />
-          <span className="text-purple-300/80 text-sm uppercase tracking-wider">
+          <span className="text-blue-300/80 text-sm uppercase tracking-wider">
             {cardCount === 1 ? 'Single Card Reading' : 'Three Card Spread'}
           </span>
         </div>
@@ -118,7 +118,7 @@ export default function Meditation({ cardCount, onComplete }: MeditationProps) {
                   : 'opacity-0 scale-95 translate-y-4'
               }`}
             >
-              <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-purple-200 italic leading-relaxed">
+              <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-200 italic leading-relaxed">
                 {phrase}
               </p>
             </div>
@@ -132,8 +132,8 @@ export default function Meditation({ cardCount, onComplete }: MeditationProps) {
               key={index}
               className={`h-2 rounded-full transition-all duration-500 ${
                 currentPhrase >= index
-                  ? 'w-12 bg-purple-400'
-                  : 'w-2 bg-purple-500/30'
+                  ? 'w-12 bg-blue-400'
+                  : 'w-2 bg-blue-500/30'
               }`}
             />
           ))}
