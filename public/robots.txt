@@ -1,10 +1,23 @@
 # Robots.txt for Lunar Arcanum Tarot
 User-agent: *
 Allow: /
-Disallow: /api/
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /dist/
+Disallow: /build/
+
+# Allow important files
+Allow: /sitemap.xml
+Allow: /favicon.ico
+Allow: /og-image.jpg
+Allow: /manifest.json
 
 # Sitemap
-Sitemap: https://victorgodoka.com.br/genshin-lunar-tarot/sitemap.xml
+Sitemap: https://victorgodoka.github.io/genshin-lunar-tarot/sitemap.xml
 
 # Crawl-delay (optional, adjust as needed)
 Crawl-delay: 1
+
+# Host (for GitHub Pages)
+Host: https://victorgodoka.github.io
