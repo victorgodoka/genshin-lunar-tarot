@@ -34,10 +34,10 @@ All 22 major arcana cards reimagined with Genshin Impact's elemental system:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/lunar-arcanum-tarot.git
+git clone https://github.com/victorgodoka/genshin-lunar-tarot.git
 
 # Navigate to project directory
-cd lunar-arcanum-tarot
+cd genshin-lunar-tarot
 
 # Install dependencies
 pnpm install
