@@ -116,42 +116,46 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
 
       <div className="relative z-10 container mr-auto ml-auto px-4 py-8 max-w-7xl">
         {/* Header */}
-        <div className="flex justify-between items-center mb-12">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-12">
           <button
             onClick={onBack}
-            className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors duration-200"
+            className="flex items-center gap-2 text-blue-300 hover:text-blue-200 transition-colors duration-200 self-start"
           >
             <Icon icon="mdi:arrow-left" className="text-xl" />
             <span className="text-sm font-medium">Back</span>
           </button>
-          <div className="flex gap-3 flex-wrap">
+          
+          {/* Mobile: 2x2 grid, Desktop: horizontal row */}
+          <div className="grid grid-cols-2 sm:flex gap-2 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={onNewReadingWithMeditation}
-              className="flex items-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-200 font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-blue-500/30 text-sm"
+              className="flex items-center justify-center gap-1 sm:gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-200 font-medium py-2 px-2 sm:px-4 rounded-lg transition-all duration-200 border border-blue-500/30 text-xs sm:text-sm"
             >
-              <Icon icon="mdi:meditation" className="text-lg" />
-              New Reading
+              <Icon icon="mdi:meditation" className="text-base sm:text-lg" />
+              <span className="hidden xs:inline sm:inline">New Reading</span>
+              <span className="xs:hidden sm:hidden">New</span>
             </button>
             <button
               onClick={handleQuickNewReading}
-              className="flex items-center gap-2 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-200 font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-cyan-500/30 text-sm"
+              className="flex items-center justify-center gap-1 sm:gap-2 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-200 font-medium py-2 px-2 sm:px-4 rounded-lg transition-all duration-200 border border-cyan-500/30 text-xs sm:text-sm"
             >
-              <Icon icon="mdi:refresh" className="text-lg" />
-              Quick Reading
+              <Icon icon="mdi:refresh" className="text-base sm:text-lg" />
+              <span className="hidden xs:inline sm:inline">Quick Reading</span>
+              <span className="xs:hidden sm:hidden">Quick</span>
             </button>
             <button
               onClick={handleShare}
-              className="flex items-center gap-2 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-200 font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-emerald-500/30 text-sm"
+              className="flex items-center justify-center gap-1 sm:gap-2 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-200 font-medium py-2 px-2 sm:px-4 rounded-lg transition-all duration-200 border border-emerald-500/30 text-xs sm:text-sm"
             >
-              <Icon icon="mdi:share" className="text-lg" />
-              Share
+              <Icon icon="mdi:share" className="text-base sm:text-lg" />
+              <span className="hidden xs:inline sm:inline">Share</span>
             </button>
             <button
               onClick={handleExport}
-              className="flex items-center gap-2 bg-teal-500/20 hover:bg-teal-500/30 text-teal-200 font-medium py-2 px-4 rounded-lg transition-all duration-200 border border-teal-500/30 text-sm"
+              className="flex items-center justify-center gap-1 sm:gap-2 bg-teal-500/20 hover:bg-teal-500/30 text-teal-200 font-medium py-2 px-2 sm:px-4 rounded-lg transition-all duration-200 border border-teal-500/30 text-xs sm:text-sm"
             >
-              <Icon icon="mdi:download" className="text-lg" />
-              Export
+              <Icon icon="mdi:download" className="text-base sm:text-lg" />
+              <span className="hidden xs:inline sm:inline">Export</span>
             </button>
           </div>
         </div>
