@@ -189,16 +189,32 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
                         <img
                           src={`tarot/${card.id}.png`}
                           alt={card.name}
-                          className="w-full h-full object-cover"
+                          className={`w-full h-full object-cover transition-transform duration-300 ${
+                            card.reversed ? 'rotate-180' : ''
+                          }`}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+                        
+                        {/* Reversed Indicator */}
+                        {card.reversed && (
+                          <div className="absolute top-2 right-2 bg-red-500/80 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                            REVERSED
+                          </div>
+                        )}
                       </div>
                       
                       {/* Card Info */}
                       <div className="p-4 space-y-2 text-left absolute bottom-0">
-                        <h3 className="text-xl font-bold text-purple-100">{card.name}</h3>
-                        <p className="text-sm text-indigo-300 italic">"{card.short_phrases[0]}"</p>
-                        <p className="text-xs text-purple-300/70 leading-relaxed">{card.insight}</p>
+                        <h3 className="text-xl font-bold text-purple-100">
+                          {card.name}
+                          {card.reversed && <span className="text-red-300 text-sm ml-2">(Reversed)</span>}
+                        </h3>
+                        <p className="text-sm text-indigo-300 italic">
+                          "{card.reversed && card.reversed_phrases ? card.reversed_phrases[0] : card.short_phrases[0]}"
+                        </p>
+                        <p className="text-xs text-purple-300/70 leading-relaxed">
+                          {card.reversed && card.reversed_insight ? card.reversed_insight : card.insight}
+                        </p>
                       </div>
                     </button>
                   </div>
@@ -301,12 +317,19 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
                 {/* Card Image */}
                 <div className="md:w-2/5 p-6">
                   <div className="sticky top-6">
-                    <div className="aspect-[2/3] rounded-xl overflow-hidden border border-purple-500/30 shadow-xl">
+                    <div className="aspect-[2/3] rounded-xl overflow-hidden border border-purple-500/30 shadow-xl relative">
                       <img
                         src={`tarot/${reading.cards[selectedCard].id}.png`}
                         alt={reading.cards[selectedCard].name}
-                        className="w-full h-full object-cover p-2"
+                        className={`w-full h-full object-cover p-2 transition-transform duration-300 ${
+                          reading.cards[selectedCard].reversed ? 'rotate-180' : ''
+                        }`}
                       />
+                      {reading.cards[selectedCard].reversed && (
+                        <div className="absolute top-2 right-2 bg-red-500/80 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                          REVERSED
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -315,7 +338,10 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
                 <div className="md:w-3/5 p-6 md:p-8 space-y-6">
                   <div className="flex items-start justify-between">
                     <div>
-                      <h2 className="text-3xl md:text-4xl font-bold text-purple-100 mb-2">{reading.cards[selectedCard].name}</h2>
+                      <h2 className="text-3xl md:text-4xl font-bold text-purple-100 mb-2">
+                        {reading.cards[selectedCard].name}
+                        {reading.cards[selectedCard].reversed && <span className="text-red-300 text-lg ml-2">(Reversed)</span>}
+                      </h2>
                       <p className="text-sm text-purple-400">Lunar Arcanum {reading.cards[selectedCard].id}</p>
                     </div>
                     <button
@@ -328,25 +354,48 @@ export default function Reading({ cardCount, onBack, onNewReadingWithMeditation,
 
                   <div className="space-y-4">
                     <div>
-                      <h3 className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">Traditional Meaning</h3>
-                      <p className="text-purple-100/90 leading-relaxed">{reading.cards[selectedCard].traditional_meaning}</p>
+                      <h3 className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">
+                        {reading.cards[selectedCard].reversed ? 'Reversed Meaning' : 'Traditional Meaning'}
+                      </h3>
+                      <p className="text-purple-100/90 leading-relaxed">
+                        {reading.cards[selectedCard].reversed && reading.cards[selectedCard].reversed_meaning 
+                          ? reading.cards[selectedCard].reversed_meaning 
+                          : reading.cards[selectedCard].traditional_meaning}
+                      </p>
                     </div>
 
                     <div>
-                      <h3 className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">Lunar Interpretation</h3>
-                      <p className="text-purple-100/90 italic leading-relaxed">{reading.cards[selectedCard].lunar_interpretation}</p>
+                      <h3 className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">
+                        {reading.cards[selectedCard].reversed ? 'Reversed Interpretation' : 'Lunar Interpretation'}
+                      </h3>
+                      <p className="text-purple-100/90 italic leading-relaxed">
+                        {reading.cards[selectedCard].reversed && reading.cards[selectedCard].reversed_interpretation 
+                          ? reading.cards[selectedCard].reversed_interpretation 
+                          : reading.cards[selectedCard].lunar_interpretation}
+                      </p>
                     </div>
 
                     <div>
-                      <h3 className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">Insight</h3>
-                      <p className="text-purple-200 font-semibold leading-relaxed">{reading.cards[selectedCard].insight}</p>
+                      <h3 className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">
+                        {reading.cards[selectedCard].reversed ? 'Reversed Insight' : 'Insight'}
+                      </h3>
+                      <p className="text-purple-200 font-semibold leading-relaxed">
+                        {reading.cards[selectedCard].reversed && reading.cards[selectedCard].reversed_insight 
+                          ? reading.cards[selectedCard].reversed_insight 
+                          : reading.cards[selectedCard].insight}
+                      </p>
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">Whispers</h3>
+                    <h3 className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">
+                      {reading.cards[selectedCard].reversed ? 'Reversed Whispers' : 'Whispers'}
+                    </h3>
                     <div className="space-y-2">
-                      {reading.cards[selectedCard].short_phrases.map((phrase, i) => (
+                      {(reading.cards[selectedCard].reversed && reading.cards[selectedCard].reversed_phrases 
+                        ? reading.cards[selectedCard].reversed_phrases 
+                        : reading.cards[selectedCard].short_phrases
+                      ).map((phrase, i) => (
                         <p key={i} className="text-indigo-300 italic text-sm">"{phrase}"</p>
                       ))}
                     </div>

@@ -12,6 +12,11 @@ export interface Card {
   element: string;
   tone: string;
   short_phrases: string[];
+  reversed?: boolean;
+  reversed_meaning?: string;
+  reversed_interpretation?: string;
+  reversed_insight?: string;
+  reversed_phrases?: string[];
 }
 
 export interface YesNoAnswer {
@@ -63,17 +68,22 @@ class SeededRandom {
   }
 }
 
-// Fisher-Yates shuffle with optional seed
+// Fisher-Yates shuffle with optional seed and reversed cards
 export function shuffleDeck(seed?: number): Card[] {
   const deck = [...CARDS];
   const rng = seed !== undefined ? new SeededRandom(seed) : null;
   
+  // Shuffle positions
   for (let i = deck.length - 1; i > 0; i--) {
     const j = Math.floor((rng ? rng.next() : Math.random()) * (i + 1));
     [deck[i], deck[j]] = [deck[j], deck[i]];
   }
   
-  return deck;
+  // Randomly assign reversed status (30% chance for each card)
+  return deck.map(card => ({
+    ...card,
+    reversed: (rng ? rng.next() : Math.random()) < 0.3
+  }));
 }
 
 // Draw N cards from the deck
@@ -206,14 +216,17 @@ export function generateNarrative(cards: Card[], seed?: number, includeYesNo: bo
     
     if (transitions) {
       const intro = getRandomPhrase(transitions.intro, rng || undefined);
-      const shortPhrase = getRandomPhrase(card.short_phrases, rng || undefined);
       const finale = getRandomPhrase(transitions.finale, rng || undefined);
       
       let paragraph = intro + ' ';
+      const shortPhrases = card.reversed && card.reversed_phrases ? card.reversed_phrases : card.short_phrases;
+      const shortPhrase = getRandomPhrase(shortPhrases, rng || undefined);
       const templateIndex = Math.floor((rng ? rng.next() : Math.random()) * CARD_APPEARANCE_TEMPLATES.length);
-      const cardAppearance = CARD_APPEARANCE_TEMPLATES[templateIndex](card.name, shortPhrase);
+      const cardName = card.reversed ? `${card.name} (Reversed)` : card.name;
+      const cardAppearance = CARD_APPEARANCE_TEMPLATES[templateIndex](cardName, shortPhrase);
       paragraph += cardAppearance + ' ';
-      paragraph += card.lunar_interpretation + ' ';
+      const interpretation = card.reversed && card.reversed_interpretation ? card.reversed_interpretation : card.lunar_interpretation;
+      paragraph += interpretation + ' ';
       
       // Add yes/no interpretation if requested
       if (includeYesNo) {
@@ -224,7 +237,8 @@ export function generateNarrative(cards: Card[], seed?: number, includeYesNo: bo
         }
       }
       
-      paragraph += card.insight + ' ';
+      const insight = card.reversed && card.reversed_insight ? card.reversed_insight : card.insight;
+      paragraph += insight + ' ';
       paragraph += finale;
       
       paragraphs.push(paragraph);
@@ -261,14 +275,20 @@ export function generateNarrative(cards: Card[], seed?: number, includeYesNo: bo
     }
 
     // Add card-specific content
-    const shortPhrase = getRandomPhrase(card.short_phrases, rng || undefined);
+    const shortPhrases = card.reversed && card.reversed_phrases ? card.reversed_phrases : card.short_phrases;
+    const shortPhrase = getRandomPhrase(shortPhrases, rng || undefined);
     const templateIndex = Math.floor((rng ? rng.next() : Math.random()) * CARD_APPEARANCE_TEMPLATES.length);
-    const cardAppearance = CARD_APPEARANCE_TEMPLATES[templateIndex](card.name, shortPhrase);
+    const cardName = card.reversed ? `${card.name} (Reversed)` : card.name;
+    const cardAppearance = CARD_APPEARANCE_TEMPLATES[templateIndex](cardName, shortPhrase);
     paragraph += cardAppearance + ' ';
-    paragraph += card.lunar_interpretation + ' ';
+    
+    // Add interpretation (reversed or upright)
+    const interpretation = card.reversed && card.reversed_interpretation ? card.reversed_interpretation : card.lunar_interpretation;
+    paragraph += interpretation + ' ';
 
-    // Add insight
-    paragraph += card.insight + ' ';
+    // Add insight (reversed or upright)
+    const insight = card.reversed && card.reversed_insight ? card.reversed_insight : card.insight;
+    paragraph += insight + ' ';
 
     // Transition to next card or finale
     if (i < cards.length - 1) {

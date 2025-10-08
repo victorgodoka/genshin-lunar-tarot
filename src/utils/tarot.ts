@@ -13,6 +13,13 @@ export const CARDS = [
     short_phrases: [
       "A spark in the void.",
       "The world answers your gesture."
+    ],
+    reversed_meaning: "Blocked potential, manipulation, lack of focus.",
+    reversed_interpretation: "The elements resist your grasp — scattered will yields only chaos and frustration.",
+    reversed_insight: "Power misused becomes powerlessness; focus your scattered energies.",
+    reversed_phrases: [
+      "The spark flickers and dies.",
+      "Tools slip from trembling hands."
     ]
   },
   {
@@ -29,6 +36,13 @@ export const CARDS = [
     short_phrases: [
       "Behind the veil, truth stirs.",
       "A whisper moves the stars."
+    ],
+    reversed_meaning: "Secrets, disconnection from intuition, hidden agendas.",
+    reversed_interpretation: "The veil becomes a shroud — intuition clouded by doubt and deception.",
+    reversed_insight: "Trust has been broken; seek clarity before moving forward.",
+    reversed_phrases: [
+      "Whispers turn to lies.",
+      "The veil conceals too much."
     ]
   },
   {
@@ -93,6 +107,13 @@ export const CARDS = [
     short_phrases: [
       "Even death cannot part us.",
       "We danced beneath the stars."
+    ],
+    reversed_meaning: "Disharmony, poor choices, broken relationships, inner conflict.",
+    reversed_interpretation: "Two souls drift apart — choices made in haste lead to separation and regret.",
+    reversed_insight: "Love has been wounded; healing requires honest communication and forgiveness.",
+    reversed_phrases: [
+      "The dance ends in silence.",
+      "Hearts turn away from each other."
     ]
   },
   {
@@ -173,6 +194,13 @@ export const CARDS = [
     short_phrases: [
       "The scales never sleep.",
       "Reason carves the path."
+    ],
+    reversed_meaning: "Injustice, bias, unfair treatment, lack of accountability.",
+    reversed_interpretation: "The scales tip with corruption — truth bent by prejudice and selfish desire.",
+    reversed_insight: "Fairness has been compromised; seek to restore balance through honest action.",
+    reversed_phrases: [
+      "The scales are broken.",
+      "Justice turns her back."
     ]
   },
   {
