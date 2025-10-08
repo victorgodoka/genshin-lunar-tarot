@@ -4,7 +4,7 @@ Allow: /
 Disallow: /api/
 
 # Sitemap
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://victorgodoka.com.br/genshin-lunar-tarot/sitemap.xml
 
 # Crawl-delay (optional, adjust as needed)
 Crawl-delay: 1

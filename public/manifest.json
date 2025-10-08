@@ -2,7 +2,7 @@
   "name": "Lunar Arcanum Tarot",
   "short_name": "Lunar Arcanum",
   "description": "Free online tarot reading with mystical interpretations inspired by Teyvat's elemental wisdom",
-  "start_url": "/",
+  "start_url": "/genshin-lunar-tarot/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#7c3aed",
